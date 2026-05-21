@@ -1,38 +1,235 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+h1 {
+  text-align: center;
+  font-size: 26px;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+  font-weight: 900;
+}
+
+.balance-box {
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e, #302b63);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.balance-box p {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.balance-box h2 {
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.positive { color: #00f2fe; }
+.negative { color: #ff6b6b; }
+
+.summary {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.summary-item {
+  flex: 1;
+  padding: 16px;
+  border-radius: 12px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.summary-item p {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.summary-item h3 {
+  font-size: 22px;
+  font-weight: 900;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.income {
+  background: #e8fef3;
+}
+
+.income p { color: #27ae60; }
+.income h3 { color: #27ae60; }
+
+.expense {
+  background: #fef0f0;
+}
+
+.expense p { color: #e74c3c; }
+.expense h3 { color: #e74c3c; }
+
+.form {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.form h3 {
+  font-size: 16px;
+  color: #1a1a2e;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form input:focus {
+  border-color: #302b63;
+}
+
+.type-selector {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.type-selector button {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #888;
+  transition: all 0.2s;
+}
+
+.active-expense {
+  border-color: #e74c3c !important;
+  color: #e74c3c !important;
+  background: #fef0f0 !important;
+}
+
+.active-income {
+  border-color: #27ae60 !important;
+  color: #27ae60 !important;
+  background: #e8fef3 !important;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #302b63, #0f0c29);
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
-.App-link {
-  color: #61dafb;
+.add-btn:hover {
+  opacity: 0.85;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.transactions h3 {
+  font-size: 16px;
+  color: #1a1a2e;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.transaction {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-left: 4px solid transparent;
+}
+
+.transaction.income {
+  background: #e8fef3;
+  border-left-color: #27ae60;
+}
+
+.transaction.expense {
+  background: #fef0f0;
+  border-left-color: #e74c3c;
+}
+
+.transaction-text {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.pos { color: #27ae60; font-weight: 700; font-size: 15px; }
+.neg { color: #e74c3c; font-weight: 700; font-size: 15px; }
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ddd;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.delete-btn:hover {
+  color: #e74c3c;
+}
+
+.empty {
+  text-align: center;
+  color: #ccc;
+  font-size: 14px;
+  padding: 20px;
 }
